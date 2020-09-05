@@ -1,0 +1,15 @@
+<h1><bold>twitter homepage</bold></h1>
+<h2>logged in as <a href='/{{ request.user.username }}/'> {{ request.user.username }} </a></h2>
+<hr>
+<a href='/addtweet/'>tweet something</a>
+<a href='/logout/'>logout</a>
+<a href='/notifications/'>notifications</a>
+   {% for tweet in all_tweets %}
+      {% if tweet.posted_by in following %}
+         <hr>
+            <h1>{{ tweet.content }}</h1>
+            <h3>posted by: <a href='/{{ tweet.posted_by }}'>{{ tweet.posted_by }}</a></h3>
+            <h3>at: <a href='/tweet/{{ tweet.id }}/'>{{ tweet.posted_at }}</a></h3>
+         <hr>
+      {% endif %}
+   {% endfor %}

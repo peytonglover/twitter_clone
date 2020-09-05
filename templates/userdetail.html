@@ -1,0 +1,33 @@
+<h1>{{ selected_user.username }}'s tweets</h1>
+<h2>tweets: {{ selected_user.tweetcount }}</h2>
+{% if followcount == -1 %}
+    <h2>Following: 0</h2>
+{% else %}
+    <h2>{{ selected_user.tagname }}'s following: {{ followcount }}</h2>
+{% endif %}
+
+{% if not selected_user %}
+    <h1>the user you're looking for doesn't exist :(</h1>
+{% endif %}
+
+{% if user != selected_user %}
+
+{% if selected_user in following %}
+    <button><a href='/unfollow/{{ selected_user.id }}/'>Unfollow</a></button>
+{% else %}
+    <button><a href='/follow/{{ selected_user.id }}/'>Follow</a></button>
+{% endif %}
+{% endif %}
+
+    <ul>
+    {% for tweet in all_tweets %}
+        {% if tweet.posted_by == selected_user %}
+            <hr>
+            <h1>{{ tweet.content }}</h1>
+            <h4>posted by: {{ selected_user.username }}</h4>
+            <h3>posted at: <a href='/tweet/{{ tweet.id }}/'>{{ tweet.posted_at }}</a></h3>
+            <hr>
+        {% endif %}
+{% endfor %}
+</ul>
+

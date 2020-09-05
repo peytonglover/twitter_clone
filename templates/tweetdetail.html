@@ -1,0 +1,12 @@
+<div>
+    {% if not selected_tweet %}
+        <h1>The tweet you're looking for doesnt exist</h1>
+    {% else %}
+        <hr>
+        <h1>{{ selected_tweet.content}}</h1>
+        <h4>posted by: <a href="/{{ selected_tweet.posted_by }}">{{ selected_tweet.posted_by }}</a></h4>
+        <h4>at: {{ selected_tweet.posted_at }}</h4>
+        <hr>
+    {% endif %}
+<a href='/'>Go back Home</a>
+</div>

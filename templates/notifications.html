@@ -1,0 +1,14 @@
+<h1>Your Notifications</h1>
+{% for notification in unread %}
+    {% if notification.tweet_notification.posted_by != user %}
+    <ul>
+        <li>
+            <a href='/{{ notification.tweet_notification.posted_by }}'>@{{ notification.tweet_notification.posted_by }}</a>
+            <a href='/tweet/{{ notfication.tweet_notification.id }}'>{{ notification.tweet_notification.posted_at }}</a>
+            <br>
+            <pre>{{ notification.tweet_notification.content }}</pre>
+        </li>
+    {% endif %}
+    </ul>
+{% endfor %}
+        
