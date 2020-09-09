@@ -15,17 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from authentication.views import index, signup_view, login_view, logout_view
+from authentication.views import IndexView, SignUpView, LoginView, LogoutView
 from tweet.views import create_tweet, tweet_detail
 from twitteruser.views import user_page, follow_view, unfollow_view
 from notification.views import notification_view
 
 urlpatterns = [
-    path('', index, name='homepage'),
+    path('', IndexView.as_view(), name='homepage'),
     path('admin/', admin.site.urls),
-    path('login/', login_view, name='login'),
-    path('signup/', signup_view, name='signup'),
-    path('logout/', logout_view, name='logout'),
+    path('login/', LoginView.as_view(), name='login'),
+    path('signup/', SignUpView.as_view(), name='signup'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('addtweet/', create_tweet, name='newtweet'),
     path('tweet/<int:tweet_id>/', tweet_detail, name='tweetdetail'),
     path('notifications/', notification_view, name='notifications'),

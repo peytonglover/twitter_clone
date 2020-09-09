@@ -19,6 +19,7 @@ def follow_view(request, user_id):
     user.following.add(selected_user)
     return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
+
 def unfollow_view(request, user_id):
     user = request.user
     selected_user = TwitterUser.objects.get(id=user_id)
